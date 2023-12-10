@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,25 +12,62 @@
             height: 100vh;
         }
 
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        label span {
+            width: 150px; /* Adjust the width based on your preference */
+            display: inline-block;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+
     </style>
 
 </head>
 <body>
-Hello this is sign up page
+
 
 <form action="signup-servlet" method="Post">
-    Full Name      : <input type="text" name="fname"><br>
-    <br>
-    Date Of Birth  : <input type="text" name="dob"><br>
-    <br>
-    Phone No.      : <input type="text" name="phoneNo"><br>
-    <br>
-    Enter Username : <input type="text" name="uname"><br>
-    <br>
-    Enter Password : <input type="password" name="upassword"><br>
-    <br>
-    <input type="submit" value="sign up">
+    <label>
+        <span>Full Name:</span>
+        <input type="text" name="fname">
+    </label>
 
+    <label>
+        <span>Date Of Birth:</span>
+        <input type="text" name="dob">
+    </label>
+
+    <label>
+        <span>Phone No.:</span>
+        <input type="text" name="phoneNo">
+    </label>
+
+    <label>
+        <span>Username:</span>
+        <input type="text" name="uname">
+    </label>
+
+    <label>
+        <span>Password:</span>
+        <input type="password" name="upassword">
+    </label>
+
+    <input type="submit" value="Sign up">
 </form>
 
 </body>

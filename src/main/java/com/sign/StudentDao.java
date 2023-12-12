@@ -5,6 +5,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.List;
 
 
 public class StudentDao {
@@ -185,4 +186,50 @@ public class StudentDao {
             }
         }
     }
+
+
+    public void getDatabase(List<Student> studentDataList) {
+        try {
+            ctx = new InitialContext();
+            DataSource ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/mywebapplicationdb");
+            con = ds.getConnection();
+
+            String useDataBase = "USE mywebapplicationdb";
+            statement = con.createStatement();
+            statement.executeUpdate(useDataBase);
+
+            String dataQuery = "SELECT * FROM studentstable;";
+            ps = con.prepareStatement(dataQuery);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Student student = new Student();
+                student.setId(rs.getInt("id"));
+                student.setFname(rs.getString("stname"));
+                student.setDob(rs.getString("stdob"));
+                student.setPhoneNo(rs.getString("stphoneNo"));
+                student.setUname(rs.getString("stuname"));
+                student.setUpassword(rs.getString("stpassword"));
+                student.setFather(rs.getString("stfather"));
+                student.setMother(rs.getString("stmother"));
+                student.setAadhar(rs.getString("staadhar"));
+                student.setGender(rs.getString("stgender"));
+                student.setBranch(rs.getString("stbranch"));
+                studentDataList.add(student);
+            }
+
+        } catch (SQLException | NamingException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (statement != null) statement.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
 }

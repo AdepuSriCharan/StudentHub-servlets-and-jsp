@@ -13,7 +13,7 @@
 <body>
 
 <form action="admin-servlet" method="post">
-    Verify yourself as admin
+    Verify yourself as admin <br>
     Enter Username : <input type="text" name="uname"><br>
     <br>
     Enter Password : <input type="password" name="upassword"><br>

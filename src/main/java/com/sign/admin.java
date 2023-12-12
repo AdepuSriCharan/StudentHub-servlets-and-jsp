@@ -18,7 +18,8 @@ public class admin extends HttpServlet {
         String upassword = req.getParameter("upassword");
         if(uname.equals("Sricharan") && upassword.equals("charan123")){
                HttpSession session = req.getSession();
-               session.setAttribute("uname",uname);
+               session.setAttribute("username",uname);
+               session.setAttribute("password",upassword);
                resp.sendRedirect("adminaccess.jsp");
             }
             else {

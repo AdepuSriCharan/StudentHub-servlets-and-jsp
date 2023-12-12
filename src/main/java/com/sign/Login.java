@@ -29,14 +29,5 @@ public class Login extends HttpServlet {
             out.println("Username or password Invalid");
             resp.sendRedirect("signin.jsp");
         }
-
-//            if(uname.equals("Sricharan") && upassword.equals("Cherry")){
-//               HttpSession session = req.getSession();
-//               session.setAttribute("uname",uname);
-//               resp.sendRedirect("home.jsp");
-//            }
-//            else {
-//                resp.sendRedirect("signin.jsp");
-//            }
     }
 }

@@ -9,25 +9,27 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 
 @WebServlet("/login-servlet")
 public class Login extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String uname = req.getParameter("uname");
-        String upassword = req.getParameter("upassword");
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String entereduname = req.getParameter("uname");
+        String enteredupassword = req.getParameter("upassword");
 
         StudentDao studentDao = new StudentDao();
-        int exp = studentDao.checkStudent(uname,upassword);
 
-        if(exp == 1){
-            HttpSession session = req.getSession();
-            session.setAttribute("username",uname);
+        String[] userArray = studentDao.checkStudent(entereduname, enteredupassword);
+        String dbuname = userArray[0];
+        String dbupassword = userArray[1];
+
+        HttpSession session = req.getSession();
+        if(enteredupassword.equals(dbupassword) && entereduname.equals(dbuname)){
+            session.setAttribute("username",entereduname);
             resp.sendRedirect("home.jsp");
         } else {
-            PrintWriter out = resp.getWriter();
-            out.println("Username or password Invalid");
-            resp.sendRedirect("signin.jsp");
+           resp.sendRedirect("error.jsp");
         }
     }
 }

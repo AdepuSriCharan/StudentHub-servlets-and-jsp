@@ -1,74 +1,130 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Sign Up</title>
 
     <style>
         body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             height: 100vh;
+            overflow: hidden;
+            background-color: #121212; /* Dark background color */
+            color: #fff; /* Light text color */
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        #sidebar {
+            width: 20%;
+            background-color: #333;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        #main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: #1f1f1f; /* Darker content background color */
+            overflow: hidden;
+            transition: margin-left 0.3s;
+        }
+
+        button {
+            font-size: 18px;
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #555;
+            color: #fff;
+            width: 100%; /* Make buttons equal in width */
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #777;
+        }
+
+        h2, p {
+            margin-bottom: 10px;
+            color: #4caf50; /* Accent color */
         }
 
         label {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            display: block;
         }
 
-        label span {
-            width: 150px; /* Adjust the width based on your preference */
-            display: inline-block;
-            text-align: right;
-            margin-right: 10px;
+        input[type="text"], input[type="password"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #4caf50; /* Accent color border */
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #333; /* Dark input background color */
+            color: #fff; /* Light text color */
+            margin-bottom: 15px;
         }
 
-        input {
-            margin-bottom: 10px;
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
         }
 
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .form-container {
+            background-color: #1f1f1f; /* Darker form background color */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+        }
     </style>
 
 </head>
 <body>
 
+<div id="main-content">
+    <div class="form-container">
+        <h2>Sign Up</h2>
+        <form action="signup-servlet" method="post">
+            <label>
+                <span>Full Name:</span>
+                <input type="text" name="fname">
+            </label>
 
-<form action="signup-servlet" method="Post">
-    <label>
-        <span>Full Name:</span>
-        <input type="text" name="fname">
-    </label>
+            <label>
+                <span>Date Of Birth:</span>
+                <input type="text" name="dob">
+            </label>
 
-    <label>
-        <span>Date Of Birth:</span>
-        <input type="text" name="dob">
-    </label>
+            <label>
+                <span>Phone No.:</span>
+                <input type="text" name="phoneNo">
+            </label>
 
-    <label>
-        <span>Phone No.:</span>
-        <input type="text" name="phoneNo">
-    </label>
+            <label>
+                <span>Username:</span>
+                <input type="text" name="uname">
+            </label>
 
-    <label>
-        <span>Username:</span>
-        <input type="text" name="uname">
-    </label>
+            <label>
+                <span>Password:</span>
+                <input type="password" name="upassword">
+            </label>
 
-    <label>
-        <span>Password:</span>
-        <input type="password" name="upassword">
-    </label>
-
-    <input type="submit" value="Sign up">
-</form>
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

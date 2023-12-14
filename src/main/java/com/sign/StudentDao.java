@@ -55,7 +55,7 @@ public class StudentDao {
 
     }
 
-    public int checkStudent(String uname,String upassword){
+    public String[] checkStudent(String uname, String upassword){
         String dbuname = null;
         String dbupassword = null;
 
@@ -93,13 +93,50 @@ public class StudentDao {
                 throw new RuntimeException(e);
             }
         }
+        return new String[]{ dbuname, dbupassword };
+    }
 
-        if(uname.equals(dbuname) && upassword.equals(dbupassword)){
-            return 1;
+    public String isAlreadyExists(String uname, String upassword){
+
+        String dbuname = null;
+        String dbupassword = null;
+
+        try {
+            ctx = new InitialContext();
+            DataSource ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/mywebapplicationdb");
+            con = ds.getConnection();
+
+            String useDataBase = "USE mywebapplicationdb";
+            statement  = con.createStatement();
+            statement.executeUpdate(useDataBase);
+
+            String selectQuery = "SELECT * FROM studentstable WHERE stuname = '"+uname+"';";
+            ps = con.prepareStatement(selectQuery);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                dbuname = rs.getString("stuname");
+                dbupassword = rs.getString("stpassword");
+                //System.out.println("name ="+dbuname+" | password ="+dbupassword);
+            }
+
+        } catch (SQLException | NamingException e) {
+            throw new RuntimeException(e);
         }
-        else
-            return 0;
 
+
+
+        finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (statement != null) statement.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return dbuname;
     }
 
     public Student getUserDetails(String username) {

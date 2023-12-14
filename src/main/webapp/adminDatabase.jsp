@@ -1,11 +1,5 @@
 <%@ page import="com.sign.Student" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: pc
-  Date: 12/12/2023
-  Time: 9:51 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,11 +7,15 @@
     <style>
         body {
             display: flex;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* Dark background color */
+            color: #fff; /* Light text color */
         }
 
         #sidebar {
             width: 20%;
-            background-color: #f2f2f2;
+            background-color: #333; /* Dark sidebar background color */
             padding: 20px;
         }
 
@@ -27,9 +25,11 @@
         }
 
         .student-info {
-            background-color: #e6e6e6;
+            background-color: #1f1f1f; /* Darker content background color */
             padding: 10px;
             margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .student-info p {
@@ -40,14 +40,35 @@
             font-size: 1.5em;
             font-weight: bold;
             margin-bottom: 10px;
+            color: #fff; /* Light text color */
+        }
+
+        button {
+            font-size: 18px;
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #555; /* Dark button background color */
+            color: #fff; /* Light text color */
+            width: 100%; /* Make buttons equal in width */
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #777; /* Darker hover color */
         }
     </style>
 </head>
 <body>
 <div id="sidebar">
-    <button onclick="location.href='adminaccess.jsp'" style="width: 100%;">Home</button>
+    <button onclick="location.href='adminaccess.jsp'">Home</button>
     <form action="admindatabase-servlet" method="post">
-        <button type="submit" style="width: 100%;">Database</button>
+        <button type="submit">Database</button>
+    </form>
+    <form action="logout-servlet" method="post">
+        <button onclick="location.href='logout.jsp'">Logout</button>
     </form>
 </div>
 

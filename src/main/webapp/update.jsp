@@ -8,106 +8,161 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Update</title>
 
     <style>
         body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
             display: flex;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #121212; /* Dark background color */
+            color: #fff; /* Light text color */
         }
 
         #sidebar {
             width: 20%;
-            background-color: #f2f2f2;
+            background-color: #333;
             padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 2;
         }
 
         #main-content {
             flex: 1;
             padding: 20px;
+            background-color: #1f1f1f; /* Darker content background color */
+            overflow: hidden;
+            transition: margin-left 0.3s;
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        button {
+            font-size: 18px;
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #555;
+            color: #fff;
+            width: 100%; /* Make buttons equal in width */
+            transition: background-color 0.3s;
         }
 
+        button:hover {
+            background-color: #777;
+        }
+
+        h2, p {
+            margin-bottom: 10px;
+        }
+
+        label {
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #333; /* Dark input background color */
+            color: #fff; /* Light text color */
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .form-container {
+            background-color: #1f1f1f; /* Darker form background color */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+        }
     </style>
 
 </head>
 <body>
 
 <div id="sidebar">
-    <button onclick="location.href='home.jsp'" style="width: 100%;">Home</button>
+    <button onclick="location.href='home.jsp'">Home</button>
+    <button onclick="location.href='profile.jsp'">Profile</button>
+    <button onclick="passUserToUpdatePage()">Update</button>
+    <button onclick="location.href='logout.jsp'">Logout</button>
+    <button onclick="location.href='delete.jsp'">Delete</button>
 
-    <button onclick="location.href='profile.jsp'" style="width: 100%;">Profile</button>
-
-    <button onclick="location.href='update.jsp'" style="width: 100%;">Update</button>
-
+    <button onclick="location.href='https://github.com/AdepuSriCharan/Basics-of-Web-Application'">GitHub</button>
 </div>
 
 <div id="main-content">
-    <!-- Your main content goes here -->
     <% Student student = (Student) session.getAttribute("user");
         if (student != null) {
     %>
-    <form action="update-servlet" method="Post">
+    <div class="form-container">
+        <h2 style="color: #fff;">Edit Profile</h2>
 
-<%--        <p>Name : <%= student.getDob() %> </p>--%>
+        <form action="update-servlet" method="Post">
+            <label>
+                <span style="color: #fff;">Full Name:</span>
+                <input type="text" name="fname" value="<%= student.getFname() %>">
+            </label>
 
-        <label>
-            <span>Full Name:</span>
-            <input type="text" name="fname">
-        </label>
+            <label>
+                <span style="color: #fff;">Date Of Birth:</span>
+                <input type="text" name="dob" value="<%= student.getDob() %>">
+            </label>
 
-        <label>
-            <span>Date Of Birth:</span>
-            <input type="text" name="dob">
-        </label>
+            <label>
+                <span style="color: #fff;">Phone No.:</span>
+                <input type="text" name="phoneNo" value="<%= student.getPhoneNo() %>">
+            </label>
 
-        <label>
-            <span>Phone No.:</span>
-            <input type="text" name="phoneNo">
-        </label>
+            <label>
+                <span style="color: #fff;">Father Name:</span>
+                <input type="text" name="father" value="<%= student.getFather() %>">
+            </label>
 
-<%--        <label>--%>
-<%--            <span>Username:</span>--%>
-<%--            <input type="text" name="uname">--%>
-<%--        </label>--%>
+            <label>
+                <span style="color: #fff;">Mother Name:</span>
+                <input type="text" name="mother" value="<%= student.getMother() %>">
+            </label>
 
-        <label>
-        <span> Father Name :</span>
-            <input type="text" name="father">
-        </label>
+            <label>
+                <span style="color: #fff;">Aadhar No.:</span>
+                <input type="text" name="aadhar" value="<%= student.getAadhar() %>">
+            </label>
 
-        <label>
-        <span> Mother Name :</span>
-            <input type="text" name="mother">
-        </label>
+            <label>
+                <span style="color: #fff;">Gender:</span>
+                <input type="text" name="gender" value="<%= student.getGender() %>">
+            </label>
 
-        <label>
-        <span> Aadhar No. : </span>
-            <input type="text" name="aadhar">
-        </label>
+            <label>
+                <span style="color: #fff;">Branch:</span>
+                <input type="text" name="branch" value="<%= student.getBranch() %>">
+            </label>
 
-        <label>
-        <span> Gender : </span>
-            <input type="text" name="gender">
-        </label>
-
-        <label>
-        <span> Branch : </span>
-            <input type="text" name="branch">
-        </label>
-
-
-        <input type="submit" value="Update">
-    </form>
+            <input type="submit" value="Update">
+        </form>
+    </div>
 </div>
 
 <%
     } else {
-    response.sendRedirect("index.jsp");
+        response.sendRedirect("index.jsp");
     }
 %>
 

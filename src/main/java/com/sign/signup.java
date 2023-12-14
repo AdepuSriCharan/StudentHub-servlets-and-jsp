@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 @WebServlet("/signup-servlet")
 public class signup extends HttpServlet {
@@ -17,25 +18,26 @@ public class signup extends HttpServlet {
         String fname = req.getParameter("fname");
         String dob = req.getParameter("dob");
         String phoneNo = req.getParameter("phoneNo");
-        String uname = req.getParameter("uname");
-        String upassword = req.getParameter("upassword");
-
-        Student student = new Student();
-        student.setFname(fname);
-        student.setDob(dob);
-        student.setPhoneNo(phoneNo);
-        student.setUname(uname);
-        student.setUpassword(upassword);
+        String entereduname = req.getParameter("uname");
+        String enteredupassword = req.getParameter("upassword");
 
         HttpSession session = req.getSession();
         StudentDao studentDao = new StudentDao();
-        int check = studentDao.checkStudent(uname,upassword);
-        if(check == 1){
+        String dbuname = studentDao.isAlreadyExists(entereduname, enteredupassword);
+
+
+        if(entereduname.equals(dbuname)){
             resp.sendRedirect("exists.jsp");
         }
         else {
+            Student student = new Student();
+            student.setFname(fname);
+            student.setDob(dob);
+            student.setPhoneNo(phoneNo);
+            student.setUname(entereduname);
+            student.setUpassword(enteredupassword);
             studentDao.registerStudent(student);
-            session.setAttribute("username",uname);
+            session.setAttribute("username",entereduname);
             resp.sendRedirect("home.jsp");
 
         }

@@ -2,14 +2,14 @@
 <%@ page import="com.sign.Student" %><%--
   Created by IntelliJ IDEA.
   User: pc
-  Date: 12/10/2023
-  Time: 9:57 PM
+  Date: 12/14/2023
+  Time: 6:14 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Logout</title>
+    <title>Delete</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -66,7 +66,7 @@
             padding: 10px;
             border: none;
             border-radius: 4px;
-            width: 10%; /* Make submit button equal in width */
+            width: 100%; /* Make submit button equal in width */
         }
 
         input[type="submit"]:hover {
@@ -89,15 +89,9 @@
     <button onclick="location.href='profile.jsp'">Profile</button>
     <button onclick="passUserToUpdatePage()">Update</button>
     <button onclick="location.href='logout.jsp'">Logout</button>
-    <button onclick="location.href='https://github.com/AdepuSriCharan/Basics-of-Web-Application'">GitHub</button>
-</div>
 
-<div id="main-content">
-    <form action="logout-servlet" method="post">
-        <p>Do you genuinely intend to log out, <%= user.getFname() %> ?</p>
-        Click here to logout<br>
-        <input type="submit" value="Logout">
-    </form>
+
+    <button onclick="location.href='https://github.com/AdepuSriCharan/Basics-of-Web-Application'">GitHub</button>
 </div>
 
 <script>
@@ -107,7 +101,12 @@
     }
 </script>
 
-<%
+<div id="main-content">
+    <form action="delete-servlet" method="post">
+    Still Working on it....
+    </form>
+</div>
+        <%
         } else {
             response.sendRedirect("index.jsp");
         }

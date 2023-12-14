@@ -80,7 +80,7 @@
 <%
     String username = (String) session.getAttribute("username");
     String password = (String) session.getAttribute("password");
-    if (username.equals("Sricharan") && password.equals("charan123")) {
+    if (username!=null && password!=null) {
     %>
 
     <div id="sidebar">

@@ -11,8 +11,8 @@
             display: flex;
             height: 100vh;
             overflow: hidden;
-            background-color: #121212; /* Dark background color */
-            color: #fff; /* Light text color */
+            background-color: #121212;
+            color: #fff;
         }
 
         #sidebar {
@@ -26,7 +26,7 @@
         #main-content {
             flex: 1;
             padding: 20px;
-            background-color: #1f1f1f; /* Darker content background color */
+            background-color: #1f1f1f;
             overflow: hidden;
             transition: margin-left 0.3s;
         }
@@ -40,7 +40,7 @@
             cursor: pointer;
             background-color: #555;
             color: #fff;
-            width: 100%; /* Make buttons equal in width */
+            width: 100%;
             transition: background-color 0.3s;
         }
 
@@ -50,7 +50,7 @@
 
         h2, p {
             margin-bottom: 10px;
-            color: #4caf50; /* Accent color */
+            color: #4caf50;
         }
 
         label {
@@ -61,11 +61,11 @@
         input[type="text"], input[type="password"], input[type="submit"] {
             width: 100%;
             padding: 10px;
-            border: 1px solid #4caf50; /* Accent color border */
+            border: 1px solid #4caf50;
             border-radius: 4px;
             box-sizing: border-box;
-            background-color: #333; /* Dark input background color */
-            color: #fff; /* Light text color */
+            background-color: #333;
+            color: #fff;
             margin-bottom: 15px;
         }
 
@@ -80,7 +80,7 @@
         }
 
         .form-container {
-            background-color: #1f1f1f; /* Darker form background color */
+            background-color: #1f1f1f;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);

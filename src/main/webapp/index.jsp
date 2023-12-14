@@ -11,10 +11,10 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      background-color: #333; /* Dark background color */
+      background-color: #333;
       margin: 0;
-      color: #fff; /* Light text color */
-      font-family: Arial, sans-serif; /* Set a fallback font */
+      color: #fff;
+      font-family: Arial, sans-serif;
     }
 
     #main-content {
@@ -32,9 +32,9 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      background-color: #555; /* Dark button background color */
-      color: #fff; /* Light text color */
-      width: 150px; /* Set a slightly larger width for the buttons */
+      background-color: #555;
+      color: #fff;
+      width: 150px;
       transition: background-color 0.3s;
     }
 

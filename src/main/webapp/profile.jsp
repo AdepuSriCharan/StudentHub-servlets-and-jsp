@@ -19,8 +19,8 @@
             display: flex;
             height: 100vh;
             overflow: hidden;
-            background-color: #121212; /* Dark background color */
-            color: #fff; /* Light text color */
+            background-color: #121212;
+            color: #fff;
         }
 
         #sidebar {
@@ -37,8 +37,8 @@
         #main-content {
             flex: 1;
             padding: 20px;
-            background-color: #283140; /* Change the background color */
-            color: #ffffff; /* Change text color to white */
+            background-color: #283140;
+            color: #ffffff;
         }
 
         h1 {
@@ -77,7 +77,7 @@
             padding: 10px;
             border: none;
             border-radius: 4px;
-            width: 80%; /* Make submit button slightly narrower */
+            width: 80%;
         }
 
         input[type="submit"]:hover {

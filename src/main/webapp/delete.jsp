@@ -18,8 +18,8 @@
             display: flex;
             height: 100vh;
             overflow: hidden;
-            background-color: #121212; /* Dark background color */
-            color: #fff; /* Light text color */
+            background-color: #121212;
+            color: #fff;
         }
 
         #sidebar {
@@ -33,7 +33,7 @@
         #main-content {
             flex: 1;
             padding: 20px;
-            background-color: #1f1f1f; /* Darker content background color */
+            background-color: #1f1f1f;
             overflow: hidden;
             transition: margin-left 0.3s;
         }
@@ -47,7 +47,7 @@
             cursor: pointer;
             background-color: #555;
             color: #fff;
-            width: 100%; /* Make buttons equal in width */
+            width: 100%;
             transition: background-color 0.3s;
         }
 
@@ -66,7 +66,7 @@
             padding: 10px;
             border: none;
             border-radius: 4px;
-            width: 100%; /* Make submit button equal in width */
+            width: 100%;
         }
 
         input[type="submit"]:hover {

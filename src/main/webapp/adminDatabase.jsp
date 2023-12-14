@@ -9,13 +9,13 @@
             display: flex;
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #121212; /* Dark background color */
-            color: #fff; /* Light text color */
+            background-color: #121212;
+            color: #fff;
         }
 
         #sidebar {
             width: 20%;
-            background-color: #333; /* Dark sidebar background color */
+            background-color: #333;
             padding: 20px;
         }
 
@@ -25,7 +25,7 @@
         }
 
         .student-info {
-            background-color: #1f1f1f; /* Darker content background color */
+            background-color: #1f1f1f;
             padding: 10px;
             margin-bottom: 10px;
             border-radius: 5px;
@@ -50,14 +50,14 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            background-color: #555; /* Dark button background color */
-            color: #fff; /* Light text color */
-            width: 100%; /* Make buttons equal in width */
+            background-color: #555;
+            color: #fff;
+            width: 100%;
             transition: background-color 0.3s;
         }
 
         button:hover {
-            background-color: #777; /* Darker hover color */
+            background-color: #777;
         }
     </style>
 </head>

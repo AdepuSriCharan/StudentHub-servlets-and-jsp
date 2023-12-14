@@ -18,7 +18,7 @@
         }
 
         h1 {
-            color: #e74c3c; /* Red color for h1 */
+            color: #e74c3c;
         }
 
         button {

@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Error</title>
-    <!-- Add any additional styles or meta tags as needed -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,11 +14,11 @@
         }
 
         h1 {
-            color: #e74c3c; /* Red color for h1 */
+            color: #e74c3c;
         }
 
         p {
-            color: #3498db; /* Blue color for p */
+            color: #3498db;
         }
     </style>
 </head>

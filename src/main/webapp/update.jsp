@@ -18,8 +18,8 @@
             display: flex;
             height: 100vh;
             overflow: hidden;
-            background-color: #121212; /* Dark background color */
-            color: #fff; /* Light text color */
+            background-color: #121212;
+            color: #fff;
         }
 
         #sidebar {
@@ -33,7 +33,7 @@
         #main-content {
             flex: 1;
             padding: 20px;
-            background-color: #1f1f1f; /* Darker content background color */
+            background-color: #1f1f1f;
             overflow: hidden;
             transition: margin-left 0.3s;
         }
@@ -47,7 +47,7 @@
             cursor: pointer;
             background-color: #555;
             color: #fff;
-            width: 100%; /* Make buttons equal in width */
+            width: 100%;
             transition: background-color 0.3s;
         }
 
@@ -70,8 +70,8 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
-            background-color: #333; /* Dark input background color */
-            color: #fff; /* Light text color */
+            background-color: #333;
+            color: #fff;
         }
 
         input[type="submit"] {
@@ -85,7 +85,7 @@
         }
 
         .form-container {
-            background-color: #1f1f1f; /* Darker form background color */
+            background-color: #1f1f1f;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);

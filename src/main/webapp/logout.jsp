@@ -18,8 +18,8 @@
             display: flex;
             height: 100vh;
             overflow: hidden;
-            background-color: #121212; /* Dark background color */
-            color: #fff; /* Light text color */
+            background-color: #121212;
+            color: #fff;
         }
 
         #sidebar {
@@ -33,7 +33,7 @@
         #main-content {
             flex: 1;
             padding: 20px;
-            background-color: #1f1f1f; /* Darker content background color */
+            background-color: #1f1f1f;
             overflow: hidden;
             transition: margin-left 0.3s;
         }

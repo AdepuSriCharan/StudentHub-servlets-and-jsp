@@ -89,6 +89,7 @@
     <button onclick="location.href='profile.jsp'">Profile</button>
     <button onclick="passUserToUpdatePage()">Update</button>
     <button onclick="location.href='logout.jsp'">Logout</button>
+    <button onclick="location.href='delete.jsp'">Delete</button>
     <button onclick="location.href='https://github.com/AdepuSriCharan/Basics-of-Web-Application'">GitHub</button>
 </div>
 

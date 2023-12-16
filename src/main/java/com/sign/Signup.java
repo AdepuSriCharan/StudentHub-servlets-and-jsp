@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 @WebServlet("/signup-servlet")
-public class signup extends HttpServlet {
+public class Signup extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String fname = req.getParameter("fname");

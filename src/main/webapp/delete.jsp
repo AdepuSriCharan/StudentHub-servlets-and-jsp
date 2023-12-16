@@ -47,7 +47,7 @@
             cursor: pointer;
             background-color: #555;
             color: #fff;
-            width: 100%;
+            width: 100%; /* Make buttons equal in width */
             transition: background-color 0.3s;
         }
 
@@ -66,13 +66,14 @@
             padding: 10px;
             border: none;
             border-radius: 4px;
-            width: 100%;
+            width: 10%; /* Make submit button equal in width */
         }
 
         input[type="submit"]:hover {
             background-color: #45a049;
         }
     </style>
+
 </head>
 <body>
 <%
@@ -89,6 +90,7 @@
     <button onclick="location.href='profile.jsp'">Profile</button>
     <button onclick="passUserToUpdatePage()">Update</button>
     <button onclick="location.href='logout.jsp'">Logout</button>
+    <button onclick="location.href='delete.jsp'">Delete</button>
 
 
     <button onclick="location.href='https://github.com/AdepuSriCharan/Basics-of-Web-Application'">GitHub</button>
@@ -103,7 +105,10 @@
 
 <div id="main-content">
     <form action="delete-servlet" method="post">
-    Still Working on it....
+        Still Working on it....
+        <p>Are you really sure to delete your account </p>
+        <input type="submit" value="Delete">
+
     </form>
 </div>
         <%

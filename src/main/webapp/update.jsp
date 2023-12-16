@@ -108,8 +108,11 @@
 </div>
 
 <div id="main-content">
-    <% Student student = (Student) session.getAttribute("user");
-        if (student != null) {
+    <%
+        String username = (String) session.getAttribute("username");
+        if(username!=null){
+            Student student = (Student) session.getAttribute("user");
+            if (student != null) {
     %>
     <div class="form-container">
         <h2 style="color: #fff;">Edit Profile</h2>
@@ -161,8 +164,12 @@
 </div>
 
 <%
-    } else {
-        response.sendRedirect("index.jsp");
+        } else {
+           response.sendRedirect("index.jsp");
+        }
+    }
+        else {
+                response.sendRedirect("index.jsp");
     }
 %>
 

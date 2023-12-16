@@ -269,4 +269,33 @@ public class StudentDao {
         }
     }
 
+    public void deleteStudent(String presentStudent) {
+        try {
+            ctx = new InitialContext();
+            DataSource ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/mywebapplicationdb");
+            con = ds.getConnection();
+
+            String useDataBase = "USE mywebapplicationdb";
+            statement = con.createStatement();
+            statement.executeUpdate(useDataBase);
+
+            String deleteQuery = "DELETE FROM studentstable WHERE stuname = '"+presentStudent+"'";
+            statement.executeUpdate(deleteQuery);
+
+
+        } catch (SQLException | NamingException e) {
+            throw new RuntimeException(e);
+        }
+
+        finally {
+            try{
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (statement != null) statement.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }

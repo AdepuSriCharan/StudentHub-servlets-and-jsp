@@ -17,6 +17,8 @@ public class Logout extends HttpServlet {
         session.removeAttribute("username");
         session.removeAttribute("user");
         session.invalidate();
-        resp.sendRedirect("index.jsp");
+
+        resp.getWriter().println("<html><head><script>window.history.forward();</script></head><body></body></html>");
+        resp.setHeader("Refresh", "2; URL=index.jsp");
     }
 }

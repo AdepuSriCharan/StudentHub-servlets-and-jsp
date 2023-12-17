@@ -16,13 +16,6 @@ import java.util.List;
 public class AdminDatabase extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        PrintWriter out = resp.getWriter();
-//        out.println("<html>");
-//        out.println("<body>");
-//        out.println("This is in Database servlet");
-//        out.println("</body>");
-//        out.println("</html>");
-//        System.out.println("In Admin Database");
         List<Student> studentDataList = new ArrayList<>();
         StudentDao studentDao = new StudentDao();
         studentDao.getDatabase(studentDataList);

@@ -24,14 +24,6 @@
             padding: 20px;
         }
 
-        .student-info {
-            background-color: #1f1f1f;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
         .student-info p {
             margin: 5px 0;
         }
@@ -40,7 +32,7 @@
             font-size: 1.5em;
             font-weight: bold;
             margin-bottom: 10px;
-            color: #fff; /* Light text color */
+            color: #fff;
         }
 
         button {
@@ -59,6 +51,13 @@
         button:hover {
             background-color: #777;
         }
+
+        input.editable {
+            background-color: black;
+            color: white;
+            border: none;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -74,28 +73,46 @@
 
 <div id="main-content">
     <div class="header">All Students Information</div>
-    <%
-        List<Student> studentDataList = (List<Student>) session.getAttribute("studentDataList");
-        if (studentDataList != null && !studentDataList.isEmpty()) {
-            for (Student student : studentDataList) {
-    %>
-    <div class="student-info">
-        <p>ID: <%= student.getId() %></p>
-        <p>Full Name: <%= student.getFname() %></p>
-        <p>Date of Birth: <%= student.getDob() %></p>
-        <p>Phone Number: <%= student.getPhoneNo() %></p>
-        <p>Father Name: <%= student.getFather() %> </p>
-        <p>Mother Name: <%= student.getMother()%> </p>
-        <p>Branch: <%= student.getBranch() %> </p>
-        <p>Aadhar No.: <%=student.getAadhar() %> </p>
-        <p>Gender: <%=student.getGender() %> </p>
-    </div>
-    <%
+    <table border="1" cellspacing="0" cellpadding="5" style="width: 100%;">
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Date of Birth</th>
+            <th>Phone Number</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Father Name</th>
+            <th>Mother Name</th>
+            <th>Branch</th>
+            <th>Aadhar No.</th>
+            <th>Gender</th>
+        </tr>
+        <%
+            List<Student> studentDataList = (List<Student>) session.getAttribute("studentDataList");
+            if (studentDataList != null && !studentDataList.isEmpty()) {
+                for (Student student : studentDataList) {
+        %>
+        <tr>
+            <td><%= student.getId() %></td>
+            <td><input type="text" name="fname" class="editable" value="<%= student.getFname() %>"></td>
+            <td><input type="text" name="dob" class="editable" value="<%= student.getDob() %>"></td>
+            <td><input type="text" name="phone" class="editable" value="<%= student.getPhoneNo() %>"></td>
+            <td><input type="text" name="uname" class="editable" value="<%= student.getUname() %>"></td>
+            <td><input type="text" name="upassword" class="editable" value="<%= student.getUpassword()%>"></td>
+            <td><input type="text" name="father" class="editable" value="<%= student.getFather() %>"></td>
+            <td><input type="text" name="mother" class="editable" value="<%= student.getMother()%>"></td>
+            <td><input type="text" name="branch" class="editable" value="<%= student.getBranch() %>"></td>
+            <td><input type="text" name="aadhar" class="editable" value="<%= student.getAadhar() %>"></td>
+            <td><input type="text" name="gender" class="editable" value="<%= student.getGender() %>"></td>
+        </tr>
+        <%
+                }
+            } else {
+                response.sendRedirect("index.jsp");
             }
-        } else {
-            response.sendRedirect("index.jsp");
-        }
-    %>
+        %>
+    </table>
 </div>
+
 </body>
 </html>

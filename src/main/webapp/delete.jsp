@@ -105,7 +105,6 @@
 
 <div id="main-content">
     <form action="delete-servlet" method="post">
-        Still Working on it....
         <p>Are you really sure to delete your account </p>
         <input type="submit" value="Delete">
 

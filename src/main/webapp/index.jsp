@@ -54,7 +54,7 @@
   </style>
 </head>
 <body>
-<%session.invalidate(); %>
+<% session.invalidate(); %>
 <div id="main-content">
   <h1>Welcome to Jbit Students Page</h1><br>
 </div>

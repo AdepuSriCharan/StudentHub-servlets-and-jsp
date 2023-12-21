@@ -186,7 +186,7 @@ public class StudentDao {
     }
 
 
-    public void update(Student student, int id) {
+    public void update(Student student) {
         try{
             ctx = new InitialContext();
             DataSource ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/mywebapplicationdb");
@@ -196,13 +196,13 @@ public class StudentDao {
             statement  = con.createStatement();
             statement.executeUpdate(useDataBase);
 
-            String updateQuery = "UPDATE studentstable SET stname = ?, stdob = ?, stphoneNo = ?,stfather = ?,stmother = ?, staadhar = ?,stgender = ?,stbranch = ? WHERE id = "+id;
+            String updateQuery = "UPDATE studentstable SET stname = ?, stdob = ?, stphoneNo = ?,stfather = ?,stmother = ?, staadhar = ?,stgender = ?,stbranch = ? WHERE id = "+student.getId();
             ps =  con.prepareStatement(updateQuery);
             ps.setString(1,student.getFname());
             ps.setString(2, student.getDob());
             ps.setString(3,student.getPhoneNo());
-//            ps.setString(5, student.getUname());
-//            ps.setString(6,student.getUpassword());
+            ps.setString(5, student.getUname());
+            ps.setString(6,student.getUpassword());
             ps.setString(4,student.getFather());
             ps.setString(5,student.getMother());
             ps.setString(6, student.getAadhar());

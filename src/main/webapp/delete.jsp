@@ -1,11 +1,5 @@
 <%@ page import="com.sign.StudentDao" %>
-<%@ page import="com.sign.Student" %><%--
-  Created by IntelliJ IDEA.
-  User: pc
-  Date: 12/14/2023
-  Time: 6:14 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.sign.Student" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -47,7 +41,7 @@
             cursor: pointer;
             background-color: #555;
             color: #fff;
-            width: 100%; /* Make buttons equal in width */
+            width: 100%;
             transition: background-color 0.3s;
         }
 
@@ -66,7 +60,7 @@
             padding: 10px;
             border: none;
             border-radius: 4px;
-            width: 10%; /* Make submit button equal in width */
+            width: 10%;
         }
 
         input[type="submit"]:hover {

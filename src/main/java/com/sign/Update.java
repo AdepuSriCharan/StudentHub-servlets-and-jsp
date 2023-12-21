@@ -43,7 +43,7 @@ public class Update extends HttpServlet {
             student.setBranch(branch.isEmpty()? student.getBranch() : branch);
 
         StudentDao studentDao = new StudentDao();
-        studentDao.update(student,student.getId());
+        studentDao.update(student);
 
         resp.sendRedirect("success.jsp");
     }

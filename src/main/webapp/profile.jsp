@@ -1,11 +1,5 @@
 <%@ page import="com.sign.StudentDao" %>
-<%@ page import="com.sign.Student" %><%--
-  Created by IntelliJ IDEA.
-  User: pc
-  Date: 12/10/2023
-  Time: 11:32 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.sign.Student" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -62,7 +56,7 @@
             cursor: pointer;
             background-color: #555;
             color: #fff;
-            width: 80%; /* Make buttons slightly narrower */
+            width: 80%;
             transition: background-color 0.3s;
         }
 

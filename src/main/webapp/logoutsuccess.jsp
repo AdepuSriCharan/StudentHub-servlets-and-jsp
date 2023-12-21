@@ -1,18 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: pc
-  Date: 12/16/2023
-  Time: 4:15 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%-- logout-confirmation.jsp --%>
 <html>
 <head>
   <title>Logout </title>
   <meta http-equiv="expires" content="0">
   <meta http-equiv="pragma" content="no-cache">
-  <%-- Additional styling or other head content --%>
 
   <style>
     body {
@@ -51,7 +42,7 @@
       cursor: pointer;
       background-color: #555;
       color: #fff;
-      width: 100%; /* Make buttons equal in width */
+      width: 100%;
       transition: background-color 0.3s;
     }
 
@@ -70,7 +61,7 @@
       padding: 10px;
       border: none;
       border-radius: 4px;
-      width: 10%; /* Make submit button equal in width */
+      width: 10%;
     }
 
     input[type="submit"]:hover {

@@ -1,4 +1,4 @@
-package com.sign;
+package com.admin;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

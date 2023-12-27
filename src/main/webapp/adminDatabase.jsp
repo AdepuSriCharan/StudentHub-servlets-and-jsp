@@ -1,4 +1,4 @@
-<%@ page import="com.sign.Student" %>
+<%@ page import="com.signup.Student" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -98,35 +98,23 @@
         %>
         <tr>
             <form action="adminUpdate-servlet" method="post">
-            <td><%= student.getId() %></td>
-            <td><input type="text" name="fname<%= student.getId() %>" class="editable" value="<%= student.getFname() %>"></td>
-            <td><input type="text" name="dob<%= student.getId() %>" class="editable" value="<%= student.getDob() %>"></td>
-            <td><input type="text" name="phone<%= student.getId() %>" class="editable" value="<%= student.getPhoneNo() %>"></td>
-            <td><input type="text" name="uname<%= student.getId() %>" class="editable" value="<%= student.getUname() %>"></td>
-            <td><input type="text" name="upassword<%= student.getId() %>" class="editable" value="<%= student.getUpassword()%>"></td>
-            <td><input type="text" name="father<%= student.getId() %>" class="editable" value="<%= student.getFather() %>"></td>
-            <td><input type="text" name="mother<%= student.getId() %>" class="editable" value="<%= student.getMother()%>"></td>
-            <td><input type="text" name="branch<%= student.getId() %>" class="editable" value="<%= student.getBranch() %>"></td>
-            <td><input type="text" name="aadhar<%= student.getId() %>" class="editable" value="<%= student.getAadhar() %>"></td>
-            <td><input type="text" name="gender<%= student.getId() %>" class="editable" value="<%= student.getGender() %>"></td>
-<%--               <% String stud="student"+ student.getId();--%>
-<%--                request.setAttribute("stud" ,student); %>--%>
-                <input type="hidden" name="studentUname" value="<%= student.getUname() %>">
-            <td><input type="submit" value="Update"></td>
-<%--                <td><button onclick="updateUser('<%= student %>')">Update</button></td>--%>
+                <td><%= student.getId() %></td>
+                <td><input type="text" name="fname<%= student.getId() %>" class="editable" value="<%= student.getFname() %>"></td>
+                <td><input type="text" name="dob<%= student.getId() %>" class="editable" value="<%= student.getDob() %>"></td>
+                <td><input type="text" name="phoneNo<%= student.getId() %>" class="editable" value="<%= student.getPhoneNo() %>"></td>
+                <td><input type="text" name="uname<%= student.getId() %>" class="editable" value="<%= student.getUname() %>"></td>
+                <td><input type="text" name="upassword<%= student.getId() %>" class="editable" value="<%= student.getUpassword()%>"></td>
+                <td><input type="text" name="father<%= student.getId() %>" class="editable" value="<%= student.getFather() %>"></td>
+                <td><input type="text" name="mother<%= student.getId() %>" class="editable" value="<%= student.getMother()%>"></td>
+                <td><input type="text" name="branch<%= student.getId() %>" class="editable" value="<%= student.getBranch() %>"></td>
+                <td><input type="text" name="aadhar<%= student.getId() %>" class="editable" value="<%= student.getAadhar() %>"></td>
+                <td><input type="text" name="gender<%= student.getId() %>" class="editable" value="<%= student.getGender() %>"></td>
+                <input type="hidden" name="stud" value="<%= student.getUname() %>">
+                <td><input type="submit" value="Update"></td>
             </form>
-
         </tr>
         <% } %>
     </table>
-<%--    <script>--%>
-<%--        function updateUser(student) {--%>
-<%--            //window.location.href = "adminUpdate-servlet?student=" + student;--%>
-<%--            <%request.setAttribute("student",student); %>--%>
-<%--        }--%>
-<%--    </script>--%>
-
-
 
     <%
         } else {

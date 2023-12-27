@@ -1,4 +1,6 @@
-package com.sign;
+package com.dao;
+
+import com.signup.Student;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -159,7 +161,7 @@ public class StudentDao {
                 student.setDob(rs.getString("stdob"));
                 student.setPhoneNo(rs.getString("stphoneNo"));
                 student.setUname(rs.getString("stuname"));
-            //    student.setUpassword(rs.getString("stupassword"));
+                student.setUpassword(rs.getString("stpassword"));
                 student.setFather(rs.getString("stfather"));
                 student.setMother(rs.getString("stmother"));
                 student.setAadhar(rs.getString("staadhar"));

@@ -1,27 +1,48 @@
-package com.sign;
+package com.admin;
 
+import com.dao.StudentDao;
+import com.signup.Student;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/adminUpdate-servlet")
 public class AdminDataUpdate extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
-        //HttpSession session = req.getSession();
-        String studentUname = req.getParameter("studentUname");
-//        Student student = (Student) req.getAttribute("stud");
+        String studentUname = req.getParameter("stud");
         StudentDao studentDao = new StudentDao();
-        Student student = studentDao.getUserDetails(studentUname);
 
+        if (studentUname.contains("NEW") || "true".equals(req.getParameter("newRecordAttribute"))) {
+            handleNewRow(req, studentDao);
+        } else {
+            Student student = studentDao.getUserDetails(studentUname);
+            updateExistingRow(req, student, studentDao);
+        }
+    }
+
+    private void handleNewRow(HttpServletRequest req, StudentDao studentDao) {
+        Student newStudent = new Student();
+        newStudent.setFname(req.getParameter("fnameNEW"));
+        newStudent.setDob(req.getParameter("dobNEW"));
+        newStudent.setPhoneNo(req.getParameter("phoneNoNEW"));
+        newStudent.setUname(req.getParameter("unameNEW"));
+        newStudent.setUpassword(req.getParameter("upasswordNEW"));
+        newStudent.setFather(req.getParameter("fatherNEW"));
+        newStudent.setMother(req.getParameter("motherNEW"));
+        newStudent.setAadhar(req.getParameter("aadharNEW"));
+        newStudent.setGender(req.getParameter("genderNEW"));
+        newStudent.setBranch(req.getParameter("branchNEW"));
+
+
+        studentDao.registerStudent(newStudent);
+    }
+
+    private void updateExistingRow(HttpServletRequest req, Student student, StudentDao studentDao) {
 
         student.setFname(req.getParameter("fname"+student.getId()).isEmpty()? student.getFname() : req.getParameter("fname"+student.getId()));
 
@@ -44,7 +65,6 @@ public class AdminDataUpdate extends HttpServlet {
         student.setBranch(req.getParameter("branch"+student.getId()).isEmpty()? student.getBranch() : req.getParameter("branch"+student.getId()));
 
         studentDao.update(student);
-
-
     }
 }
+

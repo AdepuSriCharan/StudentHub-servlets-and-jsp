@@ -1,5 +1,6 @@
-package com.sign;
+package com.signup;
 
+import com.dao.StudentDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,7 +10,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 @WebServlet("/signup-servlet")
 public class Signup extends HttpServlet {

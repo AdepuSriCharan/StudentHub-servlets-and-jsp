@@ -1,5 +1,6 @@
-package com.sign;
+package com.login;
 
+import com.dao.StudentDao;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -8,8 +9,6 @@ import jakarta.servlet.http.HttpSession;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Arrays;
 
 @WebServlet("/login-servlet")
 public class Login extends HttpServlet {

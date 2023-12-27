@@ -1,4 +1,4 @@
-package com.sign;
+package com.signup;
 
 public class Student {
 

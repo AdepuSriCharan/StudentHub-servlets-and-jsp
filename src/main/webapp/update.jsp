@@ -1,4 +1,4 @@
-<%@ page import="com.sign.Student" %>
+<%@ page import="com.signup.Student" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

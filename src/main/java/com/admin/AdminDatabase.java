@@ -1,6 +1,7 @@
-package com.sign;
+package com.admin;
 
-import jakarta.servlet.RequestDispatcher;
+import com.dao.StudentDao;
+import com.signup.Student;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,17 +10,19 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-@WebServlet("/delete-servlet")
-public class Delete extends HttpServlet {
+@WebServlet("/admindatabase-servlet")
+public class AdminDatabase extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        String presentStudent = (String) session.getAttribute("username");
-
+        List<Student> studentDataList = new ArrayList<>();
         StudentDao studentDao = new StudentDao();
-        studentDao.deleteStudent(presentStudent);
-        resp.sendRedirect("index.jsp");
+        studentDao.getDatabase(studentDataList);
+        HttpSession session = req.getSession();
+        session.setAttribute("studentDataList",studentDataList);
+        resp.sendRedirect("adminDatabase.jsp");
 
     }
 }

@@ -14,15 +14,12 @@ import java.io.IOException;
 public class AdminDataUpdate extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String studentUname = req.getParameter("stud");
+        String studentUname = req.getParameter("uname");
         StudentDao studentDao = new StudentDao();
 
-        if (studentUname.contains("NEW") || "true".equals(req.getParameter("newRecordAttribute"))) {
-            handleNewRow(req, studentDao);
-        } else {
             Student student = studentDao.getUserDetails(studentUname);
-            updateExistingRow(req, student, studentDao);
-        }
+            updateExistingRow(req,resp, student, studentDao);
+
     }
 
     private void handleNewRow(HttpServletRequest req, StudentDao studentDao) {
@@ -42,29 +39,30 @@ public class AdminDataUpdate extends HttpServlet {
         studentDao.registerStudent(newStudent);
     }
 
-    private void updateExistingRow(HttpServletRequest req, Student student, StudentDao studentDao) {
+    private void updateExistingRow(HttpServletRequest req,HttpServletResponse resp, Student student, StudentDao studentDao) throws IOException {
 
-        student.setFname(req.getParameter("fname"+student.getId()).isEmpty()? student.getFname() : req.getParameter("fname"+student.getId()));
+        student.setFname(req.getParameter("fname").isEmpty()? student.getFname() : req.getParameter("fname"));
 
-        student.setDob(req.getParameter("dob"+student.getId()).isEmpty()?student.getDob() : req.getParameter("dob"+student.getId()));
+        student.setDob(req.getParameter("dob").isEmpty()?student.getDob() : req.getParameter("dob"));
 
-        student.setPhoneNo(req.getParameter("phoneNo"+student.getId()).isEmpty()?student.getPhoneNo() : req.getParameter("phoneNo"+student.getId()));
+        student.setPhoneNo(req.getParameter("phoneNo").isEmpty()?student.getPhoneNo() : req.getParameter("phoneNo"));
 
-        student.setUname(req.getParameter("uname"+student.getId()).isEmpty()?student.getUname() : req.getParameter("upassword"+student.getId()));
+        student.setUname(req.getParameter("uname").isEmpty()?student.getUname() : req.getParameter("upassword"+student.getId()));
 
-        student.setUpassword(req.getParameter("upassword"+student.getId()).isEmpty()?student.getUpassword() : req.getParameter("upassword"+student.getId()));
+        student.setUpassword(req.getParameter("upassword").isEmpty()?student.getUpassword() : req.getParameter("upassword"));
 
-        student.setFather(req.getParameter("father"+student.getId()).isEmpty()? student.getFather() : req.getParameter("father"+student.getId()));
+        student.setFather(req.getParameter("father").isEmpty()? student.getFather() : req.getParameter("father"));
 
-        student.setMother(req.getParameter("mother"+student.getId()).isEmpty()? student.getMother() : req.getParameter("mother"+student.getId()));
+        student.setMother(req.getParameter("mother").isEmpty()? student.getMother() : req.getParameter("mother"));
 
-        student.setAadhar(req.getParameter("aadhar"+student.getId()).isEmpty()? student.getAadhar() : req.getParameter("aadhar"+student.getId()));
+        student.setAadhar(req.getParameter("aadhar").isEmpty()? student.getAadhar() : req.getParameter("aadhar"));
 
-        student.setGender(req.getParameter("gender"+student.getId()).isEmpty()? student.getGender() : req.getParameter("gender"+student.getId()));
+        student.setGender(req.getParameter("gender").isEmpty()? student.getGender() : req.getParameter("gender"));
 
-        student.setBranch(req.getParameter("branch"+student.getId()).isEmpty()? student.getBranch() : req.getParameter("branch"+student.getId()));
+        student.setBranch(req.getParameter("branch").isEmpty()? student.getBranch() : req.getParameter("branch"));
 
         studentDao.update(student);
+        resp.sendRedirect("adminDatabase.jsp");
     }
 }
 

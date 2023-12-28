@@ -87,7 +87,38 @@
             max-width: 400px;
             margin: 0 auto;
         }
+        .eye-icon {
+            position: absolute;
+            top: 50%;
+            right: 5px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
     </style>
+
+    <script>
+        function validateForm() {
+            var username = document.forms["loginForm"]["uname"].value;
+            if (username.indexOf('@') === -1) {
+                alert("Username must contain '@'");
+                return false;
+            }
+            return true;
+        }
+
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("passwordInput");
+            var eyeIcon = document.getElementById("eyeIcon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.src = "https://img.icons8.com/android/24/000000/invisible.png";
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.src = "https://img.icons8.com/android/24/000000/visible.png";
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -96,7 +127,7 @@
 <div id="main-content">
     <div class="form-container">
         <h2>Sign In</h2>
-            <form action="login-servlet" method="post">
+        <form id="loginForm" action="login-servlet" method="post" onsubmit="return validateForm()">
     <label>
         <span>Enter Username:</span>
         <input type="text" name="uname">
@@ -104,7 +135,8 @@
 
     <label>
         <span>Enter Password:</span>
-        <input type="password" name="upassword">
+        <input type="password" name="upassword" id="passwordInput">
+        <img src="https://img.icons8.com/android/24/000000/visible.png" class="eye-icon" id="eyeIcon" onclick="togglePasswordVisibility()">
     </label>
 
     <input type="submit" value="Login">

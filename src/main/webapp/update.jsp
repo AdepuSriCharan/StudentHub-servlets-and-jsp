@@ -88,6 +88,38 @@
         }
     </style>
 
+    <script>
+        function validateUpdateForm() {
+            var fname = document.forms["updateForm"]["fname"].value;
+            var dob = document.forms["updateForm"]["dob"].value;
+            var phoneNo = document.forms["updateForm"]["phoneNo"].value;
+            var aadhar = document.forms["updateForm"]["aadhar"].value;
+            var gender = document.forms["updateForm"]["gender"].value;
+            if (fname === "" || dob === "" || phoneNo === "" || aadhar === "" || gender === "") {
+                alert("All fields must be filled");
+                return false;
+            }
+            if (!dob.match(/^\d{2}[-/]\d{2}[-/]\d{4}$/)) {
+                alert("Date of Birth should be in the format 00-00-0000 or 00/00/0000");
+                return false;
+            }
+            if (!phoneNo.match(/^\d{10}$/)) {
+                alert("Phone Number should be numeric and 10 digits");
+                return false;
+            }
+            if (!aadhar.match(/^\d{12}$/)) {
+                alert("Aadhar Card should be numeric and 12 digits");
+                return false;
+            }
+            if (!(gender.toLowerCase() === "male" || gender.toLowerCase() === "female")) {
+                alert("Gender should be 'Male' or 'Female'");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
 </head>
 <body>
 
@@ -111,7 +143,7 @@
     <div class="form-container">
         <h2 style="color: #fff;">Edit Profile</h2>
 
-        <form action="update-servlet" method="Post">
+        <form action="update-servlet" method="Post" name="updateForm" onsubmit="return validateUpdateForm()">
             <label>
                 <span style="color: #fff;">Full Name:</span>
                 <input type="text" name="fname" value="<%= student.getFname() %>">

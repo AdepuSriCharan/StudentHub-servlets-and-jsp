@@ -87,7 +87,60 @@
             max-width: 400px;
             margin: 0 auto;
         }
+        .eye-icon {
+            position: absolute;
+            top: 50%;
+            right: 5px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
     </style>
+
+    <script>
+        function validateSignUpForm() {
+            var username = document.forms["signupForm"]["uname"].value;
+            var password = document.forms["signupForm"]["upassword"].value;
+            var dob = document.forms["signupForm"]["dob"].value;
+            var phoneNo = document.forms["signupForm"]["phoneNo"].value;
+
+            if (!username || !password || !dob || !phoneNo) {
+                alert("All fields must be filled");
+                return false;
+            }
+            if (username.indexOf('@') === -1) {
+                alert("Username must contain '@'");
+                return false;
+            }
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long");
+                return false;
+            }
+            var dobRegex = /^\d{2}-\d{2}-\d{4}$/;
+            if (!dob.match(dobRegex)) {
+                alert("Date of Birth should be in '00-00-0000' format");
+                return false;
+            }
+            var phoneRegex = /^\d{10}$/;
+            if (!phoneNo.match(phoneRegex)) {
+                alert("Phone number should be 10 digits");
+                return false;
+            }
+            return true;
+        }
+
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("passwordInput");
+            var eyeIcon = document.getElementById("eyeIcon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.src = "https://img.icons8.com/android/24/000000/invisible.png";
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.src = "https://img.icons8.com/android/24/000000/visible.png";
+            }
+        }
+    </script>
 
 </head>
 <body>
@@ -95,7 +148,7 @@
 <div id="main-content">
     <div class="form-container">
         <h2>Sign Up</h2>
-        <form action="signup-servlet" method="post">
+        <form id="signupForm" action="signup-servlet" method="post" onsubmit="return validateSignUpForm()">
             <label>
                 <span>Full Name:</span>
                 <input type="text" name="fname">
@@ -118,7 +171,8 @@
 
             <label>
                 <span>Password:</span>
-                <input type="password" name="upassword">
+                <input type="password" name="upassword" id="passwordInput">
+                <img src="https://img.icons8.com/android/24/000000/visible.png" class="eye-icon" id="eyeIcon" onclick="togglePasswordVisibility()">
             </label>
 
             <input type="submit" value="Sign Up">

@@ -29,20 +29,24 @@ public class Update extends HttpServlet {
         HttpSession session = req.getSession();
         Student student = (Student) session.getAttribute("user");
 
-            student.setFname(fname.isEmpty()? student.getFname() : fname);
-            student.setDob(dob.isEmpty()?student.getDob() : dob);
-            student.setPhoneNo(phoneNo.isEmpty()?student.getPhoneNo() : phoneNo);
+            student.setFname(fname);
+
+            student.setDob(dob);
+
+            student.setPhoneNo(phoneNo);
+
 //        student.setUname(uname);
 //        student.setUpassword(upassword);
-            student.setFather(father.isEmpty()? student.getFather() : father);
 
-            student.setMother(mother.isEmpty()? student.getMother() : mother);
+            student.setFather(father);
 
-            student.setAadhar(aadhar.isEmpty()? student.getAadhar() : aadhar);
+            student.setMother(mother);
 
-            student.setGender(gender.isEmpty()? student.getGender() : gender);
+            student.setAadhar(aadhar);
 
-            student.setBranch(branch.isEmpty()? student.getBranch() : branch);
+            student.setGender(gender);
+
+            student.setBranch(branch);
 
         StudentDao studentDao = new StudentDao();
         studentDao.update(student);

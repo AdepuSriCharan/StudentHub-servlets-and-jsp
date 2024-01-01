@@ -93,9 +93,14 @@
             var fname = document.forms["updateForm"]["fname"].value;
             var dob = document.forms["updateForm"]["dob"].value;
             var phoneNo = document.forms["updateForm"]["phoneNo"].value;
+            var username = document.forms["updateForm"]["uname"].value;
+            var password = document.forms["updateForm"]["upassword"].value;
+            var father = document.forms["updateForm"]["father"].value;
+            var mother = document.forms["updateForm"]["mother"].value;
+            var branch = document.forms["updateForm"]["branch"].value;
             var aadhar = document.forms["updateForm"]["aadhar"].value;
             var gender = document.forms["updateForm"]["gender"].value;
-            if (fname === "" || dob === "" || phoneNo === "" || aadhar === "" || gender === "") {
+            if (fname === "" || dob === "" || phoneNo === "" || username === "" || password === "" ||father === "" || mother === "" || branch === "" || aadhar === "" || gender === "") {
                 alert("All fields must be filled");
                 return false;
             }
@@ -105,6 +110,14 @@
             }
             if (!phoneNo.match(/^\d{10}$/)) {
                 alert("Phone Number should be numeric and 10 digits");
+                return false;
+            }
+            if (username.indexOf('@') === -1) {
+                alert("Username must contain '@'");
+                return false;
+            }
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long");
                 return false;
             }
             if (!aadhar.match(/^\d{12}$/)) {

@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpSession;
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/login-servlet")
 public class Login extends HttpServlet {
@@ -28,7 +29,12 @@ public class Login extends HttpServlet {
             session.setAttribute("username",entereduname);
             resp.sendRedirect("home.jsp");
         } else {
-           resp.sendRedirect("error.jsp");
+            resp.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = resp.getWriter();
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Incorrect Username or Password');");
+            out.println("window.location.href='signin.jsp';");
+            out.println("</script>");
         }
     }
 }

@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/signup-servlet")
 public class Signup extends HttpServlet {
@@ -23,11 +24,16 @@ public class Signup extends HttpServlet {
 
         HttpSession session = req.getSession();
         StudentDao studentDao = new StudentDao();
-        String dbuname = studentDao.isAlreadyExists(entereduname, enteredupassword);
+        String dbuname = studentDao.isAlreadyExists(entereduname);
 
 
         if(entereduname.equals(dbuname)){
-            resp.sendRedirect("exists.jsp");
+            resp.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = resp.getWriter();
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Student with username " + dbuname + " already exists.');");
+            out.println("window.location.href='signin.jsp';");
+            out.println("</script>");
         }
         else {
             Student student = new Student();

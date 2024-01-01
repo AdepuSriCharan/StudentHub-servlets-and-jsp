@@ -28,7 +28,7 @@ public class StudentDao {
             statement  = con.createStatement();
             statement.executeUpdate(useDataBase);
 
-            String querySQL = "INSERT INTO studentstable (id, stname, stdob, stphoneNo, stuname, stpassword) VALUES (?, ?, ?, ?, ?, ?) ; ";
+            String querySQL = "INSERT INTO studentstable (id, stname, stdob, stphoneNo, stuname, stpassword, stfather, stmother, staadhar, stgender, stbranch) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?); ";
             ps =  con.prepareStatement(querySQL);
 
             ps.setInt(1,student.getId());
@@ -37,6 +37,11 @@ public class StudentDao {
             ps.setString(4,student.getPhoneNo());
             ps.setString(5, student.getUname());
             ps.setString(6,student.getUpassword());
+            ps.setString(7,student.getFather());
+            ps.setString(8,student.getMother());
+            ps.setString(9, student.getAadhar());
+            ps.setString(10,student.getGender());
+            ps.setString(11,student.getBranch());
             ps.executeUpdate();
 
 
@@ -98,10 +103,10 @@ public class StudentDao {
         return new String[]{ dbuname, dbupassword };
     }
 
-    public String isAlreadyExists(String uname, String upassword){
+    public String isAlreadyExists(String uname/* String upassword*/){
 
         String dbuname = null;
-        String dbupassword = null;
+//        String dbupassword = null;
 
         try {
             ctx = new InitialContext();
@@ -117,7 +122,7 @@ public class StudentDao {
             rs = ps.executeQuery();
             if(rs.next()){
                 dbuname = rs.getString("stuname");
-                dbupassword = rs.getString("stpassword");
+//                dbupassword = rs.getString("stpassword");
                 //System.out.println("name ="+dbuname+" | password ="+dbupassword);
             }
 
@@ -198,18 +203,18 @@ public class StudentDao {
             statement  = con.createStatement();
             statement.executeUpdate(useDataBase);
 
-            String updateQuery = "UPDATE studentstable SET stname = ?, stdob = ?, stphoneNo = ?,stfather = ?,stmother = ?, staadhar = ?,stgender = ?,stbranch = ? WHERE id = "+student.getId();
+            String updateQuery = "UPDATE studentstable SET stname = ?, stdob = ?, stphoneNo = ?, stuname = ?, stpassword=?, stfather = ?,stmother = ?, staadhar = ?,stgender = ?,stbranch = ? WHERE id = "+student.getId();
             ps =  con.prepareStatement(updateQuery);
             ps.setString(1,student.getFname());
             ps.setString(2, student.getDob());
             ps.setString(3,student.getPhoneNo());
-            ps.setString(5, student.getUname());
-            ps.setString(6,student.getUpassword());
-            ps.setString(4,student.getFather());
-            ps.setString(5,student.getMother());
-            ps.setString(6, student.getAadhar());
-            ps.setString(7,student.getGender());
-            ps.setString(8,student.getBranch());
+            ps.setString(4, student.getUname());
+            ps.setString(5,student.getUpassword());
+            ps.setString(6,student.getFather());
+            ps.setString(7,student.getMother());
+            ps.setString(8, student.getAadhar());
+            ps.setString(9,student.getGender());
+            ps.setString(10,student.getBranch());
             ps.executeUpdate();
         } catch (SQLException | NamingException e) {
             throw new RuntimeException(e);

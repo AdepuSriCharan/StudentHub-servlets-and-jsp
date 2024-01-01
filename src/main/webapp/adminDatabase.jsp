@@ -63,7 +63,6 @@
             background-color: #4caf50;
         }
 
-        /* Styles for the modal */
         .modal {
             display: none;
             position: fixed;
@@ -78,11 +77,11 @@
         }
 
         .modal-content {
-            background-color: #333; /* Change to your preferred light black color */
+            background-color: #333;
             margin: 5% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 50%; /* Adjust the width as needed */
+            width: 50%;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -96,7 +95,7 @@
 
         .close:hover,
         .close:focus {
-            color: white; /* Adjust the color as needed */
+            color: white;
             text-decoration: none;
             cursor: pointer;
         }
@@ -137,7 +136,76 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+        .button-container {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        input[type="submit"],
+        input[type="button"] {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover,
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+
+
     </style>
+
+    <script>
+        function validateUpdateForm() {
+            var fname = document.forms["updateForm"]["fname"].value;
+            var dob = document.forms["updateForm"]["dob"].value;
+            var phoneNo = document.forms["updateForm"]["phoneNo"].value;
+            var username = document.forms["updateForm"]["uname"].value;
+            var password = document.forms["updateForm"]["upassword"].value;
+            var father = document.forms["updateForm"]["father"].value;
+            var mother = document.forms["updateForm"]["mother"].value;
+            var branch = document.forms["updateForm"]["branch"].value;
+            var aadhar = document.forms["updateForm"]["aadhar"].value;
+            var gender = document.forms["updateForm"]["gender"].value;
+            if (fname === "" || dob === "" || phoneNo === "" || username === "" || password === "" ||father === "" || mother === "" || branch === "" || aadhar === "" || gender === "") {
+                alert("All fields must be filled");
+                return false;
+            }
+            if (!dob.match(/^\d{2}[-/]\d{2}[-/]\d{4}$/)) {
+                alert("Date of Birth should be in the format 00-00-0000 or 00/00/0000");
+                return false;
+            }
+            if (!phoneNo.match(/^\d{10}$/)) {
+                alert("Phone Number should be numeric and 10 digits");
+                return false;
+            }
+            if (username.indexOf('@') === -1) {
+                alert("Username must contain '@'");
+                return false;
+            }
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long");
+                return false;
+            }
+            if (!aadhar.match(/^\d{12}$/)) {
+                alert("Aadhar Card should be numeric and 12 digits");
+                return false;
+            }
+            if (!(gender.toLowerCase() === "male" || gender.toLowerCase() === "female")) {
+                alert("Gender should be 'Male' or 'Female'");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
 </head>
 <body>
 <div id="sidebar">
@@ -168,12 +236,10 @@
         </tr>
         <%
             List<Student> studentDataList = (List<Student>) session.getAttribute("studentDataList");
-            int rowCounter = 0;
             if (studentDataList != null && !studentDataList.isEmpty()) {
                 for (Student student : studentDataList) {
-                    rowCounter++;
         %>
-        <tr id="row<%= rowCounter %>">
+        <tr>
             <form action="adminUpdate-servlet" method="post">
                 <td><%= student.getId() %></td>
                 <td><input type="text" name="fname<%= student.getId() %>" class="editable" value="<%= student.getFname() %>"></td>
@@ -186,17 +252,20 @@
                 <td><input type="text" name="branch<%= student.getId() %>" class="editable" value="<%= student.getBranch() %>"></td>
                 <td><input type="text" name="aadhar<%= student.getId() %>" class="editable" value="<%= student.getAadhar() %>"></td>
                 <td><input type="text" name="gender<%= student.getId() %>" class="editable" value="<%= student.getGender() %>"></td>
+                <%session.setAttribute("stud"+student.getId(),student);%>
                 <td><input type="button" value="Edit" onclick="openModal('<%= student.getId() %>', '<%= student.getFname() %>', '<%= student.getDob() %>', '<%= student.getPhoneNo() %>', '<%= student.getUname() %>', '<%= student.getUpassword() %>', '<%= student.getFather() %>', '<%= student.getMother() %>', '<%= student.getBranch() %>', '<%= student.getAadhar() %>', '<%= student.getGender() %>')"></td>
             </form>
         </tr>
         <% } %>
     </table>
+
+    <button onclick="openModal('newId','','','','','','','','','','')">+</button>
+
     <div id="editModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <div class="header">Edit Student Details</div>
-            <form action="adminUpdate-servlet" method="post">
-                <input type="hidden" name="studId" id="studId" value="">
+            <form action="adminUpdate-servlet" method="post"  name="updateForm" onsubmit="return validateUpdateForm()">
 
                 <label for="fname">Full Name:</label>
                 <input type="text" name="fname" id="fname" class="editable">
@@ -207,7 +276,7 @@
                 <label for="phoneNo">Phone Number:</label>
                 <input type="text" name="phoneNo" id="phoneNo" class="editable">
 
-                <label for="uname">User Name:</label>
+                <label for="uname">Username:</label>
                 <input type="text" name="uname" id="uname" class="editable">
 
                 <label for="upassword">Password:</label>
@@ -222,13 +291,16 @@
                 <label for="branch">Branch:</label>
                 <input type="text" name="branch" id="branch" class="editable">
 
-                <label for="aadhar">Aadhar Number:</label>
+                <label for="aadhar">Aadhaar Number:</label>
                 <input type="text" name="aadhar" id="aadhar" class="editable">
 
                 <label for="gender">Gender:</label>
                 <input type="text" name="gender" id="gender" class="editable">
-                <input type="hidden" name="uname" id="unameHidden" value="">
+
+                <input type="hidden" name="studId" id="studId" value="">
                 <input type="submit" value="Update">
+                <input type="button" onclick="deleteStudent()" value="Delete">
+
             </form>
         </div>
     </div>
@@ -246,10 +318,32 @@
             document.getElementById('branch').value = branch;
             document.getElementById('aadhar').value = aadhar;
             document.getElementById('gender').value = gender;
-            document.getElementById('unameHidden').value = uname;
+            document.getElementById('studId').value = studentId;
         }
         function closeModal() {
             document.getElementById('editModal').style.display = 'none';
+        }
+
+        function deleteStudent() {
+            var confirmDelete = confirm("Are you sure you want to delete this student?");
+            if (confirmDelete) {
+                var studentUname = document.getElementById('uname').value;
+                var form = document.createElement('form');
+                form.action = 'AdminDeleteStudent-servlet';
+                form.method = 'POST';
+
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'studentUname';
+                input.value = studentUname;
+
+                form.appendChild(input);
+
+                document.body.appendChild(form);
+                form.submit();
+
+                closeModal();
+            }
         }
     </script>
     <%

@@ -23,16 +23,14 @@
             padding: 20px;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         #main-content {
             flex: 1;
             padding: 20px;
-            background-color: #283140;
-            color: #ffffff;
+            background-color: #1f1f1f;
+            overflow: hidden;
+            transition: margin-left 0.3s;
         }
 
         h1 {
@@ -49,14 +47,14 @@
 
         button {
             font-size: 18px;
-            margin: 10px 0;
+            margin: 10px;
             padding: 10px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             background-color: #555;
             color: #fff;
-            width: 80%;
+            width: 100%;
             transition: background-color 0.3s;
         }
 
@@ -71,7 +69,7 @@
             padding: 10px;
             border: none;
             border-radius: 4px;
-            width: 80%;
+            width: 100%;
         }
 
         input[type="submit"]:hover {

@@ -41,16 +41,6 @@
     button:hover {
       background-color: #777;
     }
-
-    input[type="submit"] {
-      background-color: #4caf50;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #45a049;
-    }
   </style>
 </head>
 <body>
@@ -67,8 +57,6 @@
   }
 </script>
 
-<br>
-
 <button type="button" onclick="redirectToSignupPage()">Sign up</button>
 
 <script>
@@ -76,6 +64,15 @@
     window.location.href = "signup.jsp";
   }
 </script>
+
+<button type="button" onclick="redirectToAdminPage()">Admin</button>
+
+<script>
+  function redirectToAdminPage() {
+    window.location.href = "admin.jsp";
+  }
+</script>
+
 
 </body>
 </html>
